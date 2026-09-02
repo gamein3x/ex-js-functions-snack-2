@@ -40,7 +40,7 @@ console.log(esegui(1, 88, somma)); */
 
 // Crea un generatore di funzioni "crea timer"
 
-    function creaTimer(tempo) {
+   /*  function creaTimer(tempo) {
 
         const timerSeconds = tempo/1000;
 
@@ -54,4 +54,14 @@ console.log(esegui(1, 88, somma)); */
     }
 
     const timer3s = creaTimer(3000);
-    timer3s();
+    timer3s(); */
+
+// Definisci funzione che accetta un messaggio e lo stampa ogni secondo
+
+function printOgniSec(msg){
+    setInterval(() => {
+        console.log(msg);
+    }, 1000);
+}
+
+printOgniSec("Wela");
