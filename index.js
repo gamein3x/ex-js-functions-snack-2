@@ -1,4 +1,4 @@
-// Crea una funzione che somma due numeri
+/* // Crea una funzione che somma due numeri
 
 /// dichiarativa:
 
@@ -36,7 +36,22 @@ console.log(somma(5, 3));
         return somma(n1, n2);
     }
 
-console.log(esegui(1, 88, somma));
+console.log(esegui(1, 88, somma)); */
 
 // Crea un generatore di funzioni "crea timer"
 
+    function creaTimer(tempo) {
+
+        const timerSeconds = tempo/1000;
+
+        console.log(`${timerSeconds}s di tempo...`);
+
+        return () => {
+            setTimeout(() => {
+                console.log('Timeout!');
+            }, tempo);
+        }
+    }
+
+    const timer3s = creaTimer(3000);
+    timer3s();
