@@ -87,7 +87,7 @@ conta2sec(); */
 
 // Crea una funzione che ferma un timer dopo un certo tempo
 
-function eseguiFerma(msg, interval, lenght) {
+/* function eseguiFerma(msg, interval, lenght) {
     
     const intervalId = setInterval(() => {
         console.log(msg);
@@ -98,4 +98,23 @@ function eseguiFerma(msg, interval, lenght) {
     }, lenght)
 }
 
-eseguiFerma("Ciao", 1000, 4000);
+eseguiFerma("Ciao", 1000, 4000); */
+
+// snack 8
+
+    function countdown(n){
+
+        let counter = n;
+
+        const intervalId = setInterval(() => {
+            if (counter > 0){
+                console.log(counter);
+                counter--;
+            }else{
+                console.log('Timeout');
+                clearInterval(intervalId);
+            }
+        }, 1000);
+    }
+
+    countdown(5);
