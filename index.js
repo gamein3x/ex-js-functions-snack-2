@@ -74,11 +74,13 @@ function creaAutoCounter(interval) {
     return () => {
         setInterval(() => {
             count++
-            console.log(`Contatore a ${count}, passati ${count*5} secondi`);
+            console.log(`Contatore a ${count}, passati ${count*(interval/1000)} secondi`);
         }, interval);
     }
 }
 
 const conta5sec = creaAutoCounter(5000);
+const conta2sec = creaAutoCounter(2000);
 
 conta5sec();
+conta2sec();
