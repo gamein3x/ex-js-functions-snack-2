@@ -69,7 +69,7 @@ printOgniSec("Wela"); */
 // Definisci funzione "crea contatore automatico" che accetta un intervallo di tempo e restituisce una funzione che avvia un "setInterval"
 
 
-function creaAutoCounter(interval) {
+/* function creaAutoCounter(interval) {
     let count = 0;
     return () => {
         setInterval(() => {
@@ -83,4 +83,19 @@ const conta5sec = creaAutoCounter(5000);
 const conta2sec = creaAutoCounter(2000);
 
 conta5sec();
-conta2sec();
+conta2sec(); */
+
+// Crea una funzione che ferma un timer dopo un certo tempo
+
+function eseguiFerma(msg, interval, lenght) {
+    
+    const intervalId = setInterval(() => {
+        console.log(msg);
+    }, interval);
+
+    setTimeout(() => {
+        clearInterval(intervalId)
+    }, lenght)
+}
+
+eseguiFerma("Ciao", 1000, 4000);
