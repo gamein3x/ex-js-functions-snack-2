@@ -58,10 +58,27 @@ console.log(esegui(1, 88, somma)); */
 
 // Definisci funzione che accetta un messaggio e lo stampa ogni secondo
 
-function printOgniSec(msg){
+/* function printOgniSec(msg){
     setInterval(() => {
         console.log(msg);
     }, 1000);
 }
 
-printOgniSec("Wela");
+printOgniSec("Wela"); */
+
+// Definisci funzione "crea contatore automatico" che accetta un intervallo di tempo e restituisce una funzione che avvia un "setInterval"
+
+
+function creaAutoCounter(interval) {
+    let count = 0;
+    return () => {
+        setInterval(() => {
+            count++
+            console.log(`Contatore a ${count}, passati ${count*5} secondi`);
+        }, interval);
+    }
+}
+
+const conta5sec = creaAutoCounter(5000);
+
+conta5sec();
