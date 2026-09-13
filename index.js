@@ -1,4 +1,7 @@
-/* // Crea una funzione che somma due numeri
+const sec = (n) => (n*1000);
+
+
+// Crea una funzione che somma due numeri
 
 /// dichiarativa:
 
@@ -10,19 +13,19 @@ console.log(somma(5, 3));
 
 /// anonima:
 
-    const somm = function(num1, num2) {return num1 + num2};
+    const sum = function(num1, num2) {return num1 + num2};
 
-    const sommEs = somm(1, 2);
+    const sumEs = sum(1, 2);
 
-    console.log(sommEs);
+    console.log(sumEs);
 
 /// arrow:
 
-    const soamma = (a, b) => {return a + b};
+    const sumArrow = (a, b) => {return a + b};
 
-    const soammaEs = soamma(5, 4);
+    const sumArrowEs = sumArrow(5, 4);
 
-    console.log(soammaEs);
+    console.log(sumArrowEs);
 
 // Crea una funzione che fa il quadrato di un numero
 
@@ -32,15 +35,23 @@ console.log(somma(5, 3));
 
 // Crea una funzione "esegui operazione" con callback
 
+    // Crea una funzione "esegui operazione" con callback
+
+    const somma = (num1, num2) => (num1 + num2);
+    const moltiplica = (num1, num2) => (num1*num2); 
+
+
+
     function esegui(n1, n2, operatore) {
-        return somma(n1, n2);
+        return operatore(n1, n2);
     }
 
-console.log(esegui(1, 88, somma)); */
+console.log(esegui(1, 88, somma));
+console.log(esegui(1, 88, moltiplica));
 
 // Crea un generatore di funzioni "crea timer"
 
-   /*  function creaTimer(tempo) {
+function creaTimer(tempo) {
 
         const timerSeconds = tempo/1000;
 
@@ -53,23 +64,23 @@ console.log(esegui(1, 88, somma)); */
         }
     }
 
-    const timer3s = creaTimer(3000);
-    timer3s(); */
+    const timer3s = creaTimer(sec(3));
+    timer3s();
 
 // Definisci funzione che accetta un messaggio e lo stampa ogni secondo
 
-/* function printOgniSec(msg){
+function printOgniSec(msg){
     setInterval(() => {
         console.log(msg);
     }, 1000);
 }
 
-printOgniSec("Wela"); */
+printOgniSec("Wela");
 
 // Definisci funzione "crea contatore automatico" che accetta un intervallo di tempo e restituisce una funzione che avvia un "setInterval"
 
 
-/* function creaAutoCounter(interval) {
+function creaAutoCounter(interval) {
     let count = 0;
     return () => {
         setInterval(() => {
@@ -79,15 +90,15 @@ printOgniSec("Wela"); */
     }
 }
 
-const conta5sec = creaAutoCounter(5000);
-const conta2sec = creaAutoCounter(2000);
+const conta5sec = creaAutoCounter(sec(5));
+const conta2sec = creaAutoCounter(sec(2));
 
 conta5sec();
-conta2sec(); */
+conta2sec();
 
 // Crea una funzione che ferma un timer dopo un certo tempo
 
-/* function eseguiFerma(msg, interval, lenght) {
+function eseguiFerma(msg, interval, lenght) {
     
     const intervalId = setInterval(() => {
         console.log(msg);
@@ -98,9 +109,9 @@ conta2sec(); */
     }, lenght)
 }
 
-eseguiFerma("Ciao", 1000, 4000); */
+eseguiFerma("Ciao", sec(1), sec(4));
 
-// snack 8
+// Crea una funzione che simula un conto alla rovescia
 
     function countdown(n){
 
@@ -114,7 +125,48 @@ eseguiFerma("Ciao", 1000, 4000); */
                 console.log('Timeout');
                 clearInterval(intervalId);
             }
-        }, 1000);
+        }, sec(1));
     }
 
     countdown(5);
+
+// Creare una funzione che esegue una sequenza di operazioni con ritardi
+
+function sequence(operazioni, interval) {
+
+    operazioni.forEach((operazione, index) => {
+        setTimeout(() => {
+            operazione();
+        }, interval * index)
+    })
+
+}
+
+sequence([
+    () => console.log("Ciao1"),
+    () => console.log("Ciao2")
+], sec(3));
+
+// Scrivi una funzione creaThrottler che accetta una funzione e un tempo `limite`.
+
+function creaThrottler(fun, limit) {
+
+    let ultimaExec = 0;
+
+    return function (...args) {
+
+        const ora = Date.now();
+
+        if (ora - ultimaExec >= limit) {
+            ultimaExec = ora;
+            fun(...args);
+        }else{
+            console.log("Non posso eseguire");
+        }
+    }
+}
+
+const throttlerLog = creaThrottler(() => console.log("Eseguito"), sec(2));
+
+throttlerLog();
+throttlerLog();
